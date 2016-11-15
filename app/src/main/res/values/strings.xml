@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">FinalProject</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="About">Welcome to the world of Pokemon! In this game,
+    you have to find and battle wild Pokemon in order to train your own Pokemon that you
+    catch along the way. Walk with your device and see your character move in real time! Train your pokemon
+    to be strong enough to battle the Elite 4 in order to win the game! Best of luck to you Pokemon trainer!</string>
+    <string name="ok_label">OK</string>
+    <string name="tutorial_label">Tutorial</string>
+    <string name="fire_pokemon">You have chosen Charmander! Charmander is the fire type pokemon.</string>
+    <string name="water_pokemon">You have chosen Squirtle! Squirtle is the water type pokemon.</string>
+    <string name="grass_pokemon">You have chosen Bulbasaur! Bulbasaur is the grass type pokemon.</string>
+    <string name="choose_label">Choose</string>
+    <string name="cancel_label">Cancel</string>
+    <string name="quit_game">Quit Game</string>
+    <string name="quit_game_label">Would you like to quit the game?</string>
+    <string name="pokecenter">PokeCenter</string>
+    <string name="pokecenter_label">Thank you for visiting the PokeCenter! Your Pokemon
+    have been restored to full health. We hope to see you again!</string>
+    <string name="thankyou">Thank You</string>
+    <string name="EliteFour">Elite 4</string>
+    <string name="masterball">Masterball</string>
+    <string name="potion">Potion</string>
+
+
+    <string name="Bag">Bag</string>
+    <string name="Elite">Elite</string>
+    <string name="Pokedex">Pokedex</string>
+    <string name="Settings">Settings</string>
+    <string name="Pokecenter">PokeCenter</string>
+    <string name="Map">Map</string>
+    <string name="Buttons">Buttons</string>
+
+
+</resources>

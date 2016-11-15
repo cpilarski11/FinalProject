@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/battlestage">
+
+    <fragment
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout="@layout/opponent_bio_fragment"
+        android:layout_marginLeft="46dp"
+        android:layout_marginStart="46dp"
+        android:layout_marginTop="177dp"
+        android:id="@+id/fragment4"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+    </fragment>
+
+    <fragment
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout="@layout/player_bio_battle"
+        android:layout_marginRight="38dp"
+        android:layout_marginEnd="38dp"
+        android:layout_marginTop="232dp"
+        android:id="@+id/fragment3"
+        android:layout_below="@+id/fragment4"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true">
+
+    </fragment>
+
+    <fragment
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout="@layout/battle_menu_layout"
+        android:id="@+id/fragment5"
+        android:layout_marginBottom="38dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true">
+
+    </fragment>
+
+    <fragment
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout='@layout/pokemon'
+        android:layout_alignTop="@+id/fragment4"
+        android:layout_alignLeft="@+id/fragment3"
+        android:layout_alignStart="@+id/fragment3"
+        android:layout_marginLeft="47dp"
+        android:layout_marginStart="47dp"
+        android:layout_marginTop="31dp"
+        android:id="@+id/fragment6">
+
+    </fragment>
+
+    <fragment
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout='@layout/pokemon'
+        android:layout_alignTop="@+id/fragment3"
+        android:layout_alignRight="@+id/fragment4"
+        android:layout_alignEnd="@+id/fragment4"
+        android:layout_marginRight="54dp"
+        android:layout_marginEnd="54dp"
+        android:id="@+id/fragment7">
+
+    </fragment>
+
+</RelativeLayout>
