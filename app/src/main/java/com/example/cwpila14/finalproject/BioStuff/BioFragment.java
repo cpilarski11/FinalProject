@@ -34,6 +34,7 @@ public class BioFragment extends Fragment {
     ImageButton girl;
 
     EditText playerName;
+    String s;
 
 
     @Override
@@ -47,6 +48,7 @@ public class BioFragment extends Fragment {
         this.girl = (ImageButton) rootView.findViewById(R.id.girl);
 
         this.playerName = (EditText) rootView.findViewById(R.id.playerName);
+        //this.s = playerName.getText().toString();
 
         checkMarkOne.setVisibility(View.INVISIBLE);
         checkMarkTwo.setVisibility(View.INVISIBLE);

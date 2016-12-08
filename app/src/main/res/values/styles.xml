@@ -21,4 +21,24 @@
 
     </style>
 
+    <!-- Temp style for testing TODO remove this once done-->
+    <style name="TextView"><item name="android:layout_width">250dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">0</item>
+        <item name="android:textSize">36sp</item>
+        <item name="android:paddingRight">10dp</item>
+    </style>
+
+
+    <!-- Style for the tiles-->
+    <!-- 34.8, 32-->
+    <style name="Tiles">
+        <item name="android:layout_width">54dp</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:layout_gravity">fill</item>
+        <item name="android:layout_margin">0dp</item>
+        <item name="android:background">@drawable/grass</item>
+        <item name="android:scaleType">centerCrop</item>
+    </style>
+
 </resources>

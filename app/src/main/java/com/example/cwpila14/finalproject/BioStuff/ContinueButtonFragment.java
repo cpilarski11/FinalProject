@@ -37,7 +37,7 @@ public class ContinueButtonFragment extends Fragment {
         this.continueButton = (Button) rootView.findViewById(R.id.continueButton);
 
         this.playerName = (EditText) rootView.findViewById(R.id.playerName);
-        playerName.setText("");
+        //playerName.setText("");
 
         this.checkMarkOne = (ImageView) rootView.findViewById(R.id.checkmark1);
 
@@ -47,9 +47,11 @@ public class ContinueButtonFragment extends Fragment {
             @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onClick(View view) {
-                //Intent intent = new Intent(getActivity(), StarterPokemonActivity.class);
-                //getActivity().startActivity(intent);
-                if (playerName.getText().toString().equals("")){
+                Intent intent = new Intent(getActivity(), StarterPokemonActivity.class);
+                getActivity().startActivity(intent);
+
+
+                /*if (b.s.trim().length() <= 0){
                     Toast.makeText(getContext(), "You need to enter a player name", Toast.LENGTH_LONG).show();
                 }
                 else if (checkMarkOne.getVisibility() == View.INVISIBLE && checkMarkTwo.getVisibility() == View.INVISIBLE){
@@ -59,7 +61,7 @@ public class ContinueButtonFragment extends Fragment {
                     //player_name = playerName.getText().toString();
                     Intent intent = new Intent(getActivity(), StarterPokemonActivity.class);
                     getActivity().startActivity(intent);
-                }
+                }*/
 
 
             }

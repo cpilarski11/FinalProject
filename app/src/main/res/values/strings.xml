@@ -32,6 +32,7 @@
     <string name="Pokecenter">PokeCenter</string>
     <string name="Map">Map</string>
     <string name="Buttons">Buttons</string>
+    <string name="permission_resource">android.permission.ACCESS_FINE_LOCATION</string>
 
 
 </resources>
