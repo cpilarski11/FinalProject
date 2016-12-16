@@ -13,6 +13,9 @@ import com.example.cwpila14.finalproject.R;
  */
 
 public class VerticalMenuBarFragment extends Fragment {
+
+    // empty class for vertical menu bar
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.vertical_menu_bar_fragment, container, false);

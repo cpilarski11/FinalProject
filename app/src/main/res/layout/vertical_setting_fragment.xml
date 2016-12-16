@@ -6,43 +6,33 @@
 
     <ImageButton
         android:id="@+id/EliteBattle"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
         android:background="@drawable/pokeballicon"
-        android:layout_marginBottom="15dp"
+        style="@style/MenuIcons"
         />
 
     <ImageButton
         android:id="@+id/PokeCenter"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
         android:background="@drawable/pokecenter"
-        android:layout_marginBottom="15dp"
+        style="@style/MenuIcons"
         />
 
     <ImageButton
         android:id="@+id/YourPokemon"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
         android:background="@drawable/pokedex"
-        android:layout_marginBottom="15dp"
+        style="@style/MenuIcons"
         />
 
 
     <ImageButton
         android:id="@+id/YourItems"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
         android:background="@drawable/bag"
-        android:layout_marginBottom="15dp"
+        style="@style/MenuIcons"
         />
 
     <ImageButton
         android:id="@+id/Settings"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
         android:background="@drawable/settings"
-        android:layout_marginBottom="15dp"
+        style="@style/MenuIcons"
         />
 
 </LinearLayout>

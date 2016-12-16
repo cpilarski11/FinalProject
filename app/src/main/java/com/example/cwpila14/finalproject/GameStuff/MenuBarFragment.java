@@ -14,6 +14,8 @@ import com.example.cwpila14.finalproject.R;
 
 public class MenuBarFragment extends Fragment {
 
+    // empty class for the menu bar
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.menu_bar_fragment, container, false);

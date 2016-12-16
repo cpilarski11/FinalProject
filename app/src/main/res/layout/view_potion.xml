@@ -12,12 +12,9 @@
         android:layout_gravity="center"/>
 
     <TextView
-        android:layout_marginTop="20dp"
-        android:layout_width="500dp"
-        android:layout_height="wrap_content"
-        android:text="If your Pokemon are running low in battle, use a potion to fully heal them"
-        android:textAlignment="center"
-        android:textSize="25dp"
+        style="@style/TutText"
+        android:text="@string/tutPotion"
+
         />
 
 </LinearLayout>

@@ -15,14 +15,16 @@
             android:layout_marginRight="40dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pokemon"/>
+            android:text="@string/pokemon"
+            android:layout_weight="9"/>
 
         <TextView
             android:id="@+id/PokemonLevel"
             android:textSize="20sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Level"/>
+            android:text="@string/level"
+            android:layout_weight="1"/>
 
     </LinearLayout>
 
@@ -35,7 +37,7 @@
             android:id="@+id/Health"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="HP: 0/0"
+            android:text="@string/hp"
             android:textSize="15sp"
             android:layout_marginRight="10dp"/>
 
@@ -44,14 +46,9 @@
             android:id="@+id/PokemonHealthBar"
             android:layout_width="150dp"
             android:layout_height="10dp"
+            style="@android:style/Widget.ProgressBar.Horizontal"
         />
 
     </LinearLayout>
-
-    <ProgressBar
-        android:layout_marginTop="5dp"
-        android:id="@+id/XpBar"
-        android:layout_width="200dp"
-        android:layout_height="10dp" />
 
 </LinearLayout>

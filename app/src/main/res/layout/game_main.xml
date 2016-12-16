@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/yellowback">
 
     <fragment
         android:id="@+id/grid_fragment"
@@ -28,7 +29,8 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        android:id="@+id/linearLayout">
 
     <fragment
         android:id="@+id/elitefourFragment"
@@ -84,6 +86,36 @@
     </fragment>
 
     </LinearLayout>
+
+    <ImageView
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:background="@drawable/ash"
+        android:id="@+id/imageView2"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/menuBarFragment"
+        android:layout_below="@+id/grid_fragment" />
+
+    <TextView
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="Player Name"
+        android:textSize="30dp"
+        android:id="@+id/textView3"
+        android:layout_marginBottom="43dp"
+        android:layout_alignBottom="@+id/imageView3"
+        android:layout_toStartOf="@+id/imageView2" />
+
+    <ImageView
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:background="@drawable/questionmark"
+        android:id="@+id/imageView3"
+        android:layout_marginEnd="49dp"
+        android:layout_below="@+id/grid_fragment"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="11dp" />
 
 
 </RelativeLayout>

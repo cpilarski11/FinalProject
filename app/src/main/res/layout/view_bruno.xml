@@ -13,21 +13,13 @@
         />
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="My name is Bruno. Are you ready to lose?"
-        android:textColor="#FFFFFF"
-        android:textAlignment="center"
-        android:textSize="30dp"
-        android:layout_marginBottom="40dp"
+        style="@style/EliteText"
+        android:text="@string/brunoText"
+
         />
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Battle!"
-        android:textColor="#FFFFFF"
-        android:background="#000000"
-        android:textSize="40dp"
+        android:id="@+id/bruno_fight"
+        style="@style/EliteBattleButton"
         />
 
 </LinearLayout>

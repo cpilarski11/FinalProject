@@ -13,12 +13,9 @@
         />
 
     <TextView
-        android:layout_marginTop="20dp"
-        android:layout_width="500dp"
-        android:layout_height="wrap_content"
-        android:text="Test your strength and battle the Elite 4 to become a Pokemon master!"
-        android:textAlignment="center"
-        android:textSize="25dp"
+        style="@style/TutText"
+        android:text="@string/tutElite4"
+
         />
 
 </LinearLayout>

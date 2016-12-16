@@ -14,6 +14,8 @@ import com.example.cwpila14.finalproject.R;
 
 public class VerticalInGameSettingsFragment extends Fragment {
 
+    // empty class for vertical orientation
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.vertical_setting_fragment, container, false);

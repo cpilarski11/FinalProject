@@ -12,14 +12,16 @@
             android:layout_width="275dp"
             android:layout_height="75dp"
             android:textSize="30dp"
-            android:text="Fight"
+            android:text="@string/fight"
+            android:id="@+id/button_fight"
             />
 
         <Button
             android:layout_width="275dp"
             android:layout_height="75dp"
             android:textSize="30dp"
-            android:text="Bag"/>
+            android:text="@string/bag2"
+            android:id="@+id/button_bag"/>
 
 
     </LinearLayout>
@@ -29,17 +31,18 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-    <Button
+    <TextView
         android:layout_width="275dp"
         android:layout_height="75dp"
         android:textSize="30dp"
-        android:text="Pokemon"/>
+        android:id="@+id/battle_text"/>
 
     <Button
         android:layout_width="275dp"
         android:layout_height="75dp"
         android:textSize="30dp"
-        android:text="Run Away"/>
+        android:text="@string/run_away"
+        android:id="@+id/button_run"/>
 
     </LinearLayout>
 

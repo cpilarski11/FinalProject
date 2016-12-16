@@ -8,7 +8,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Bag"
+        android:text="@string/bag"
         android:textSize="50dp"
         android:layout_marginBottom="60dp"
         />
@@ -18,26 +18,8 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/masterball"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="x5"
-            android:textSize="30dp"
-            />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <ImageView
+        <ImageButton
+            android:id="@+id/Potion"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:background="@drawable/potion"
@@ -46,8 +28,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="x10"
+            android:text="@string/amount"
             android:textSize="30dp"
+            android:id="@+id/potion_number"
             />
     </LinearLayout>
 

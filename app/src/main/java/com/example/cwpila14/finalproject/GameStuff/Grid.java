@@ -1,6 +1,9 @@
 package com.example.cwpila14.finalproject.GameStuff;
 
+import android.app.AlertDialog;
 import android.app.Fragment;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.location.Location;
@@ -11,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.cwpila14.finalproject.Battle.WildBattleActivity;
 import com.example.cwpila14.finalproject.R;
 
 public class Grid extends Fragment {
@@ -21,6 +25,8 @@ public class Grid extends Fragment {
     private int currentTileNumber;
     private Drawable player;
     private static final double pi = Math.PI;
+    private Resources r;
+    private AlertDialog mDialog;
 
 
     @Override
@@ -28,10 +34,11 @@ public class Grid extends Fragment {
 
         View root = inflater.inflate(R.layout.fragment_grid, container, false);
 
+
+
         tileIds = new int[110];
         usedIds = new boolean[110];
-        Resources r = getResources();
-        player = r.getDrawable(R.drawable.playermodel,null);
+        r = getResources();
         //get the ids for all the tiles
         for(int i = 0; i < 110; i++){
             int id = r.getIdentifier("Tile" + i, "id", getActivity().getPackageName());
@@ -46,7 +53,6 @@ public class Grid extends Fragment {
     }
 
     // moves the current character
-    //TODO currently just moves forward, change to all directions
     public void move_player(Location current_loc, Location last_loc){
         ImageView currentTile = (ImageView) getActivity().findViewById(currentTileId);
 
@@ -148,8 +154,31 @@ public class Grid extends Fragment {
         ImageView currentTile = (ImageView) getActivity().findViewById(TileID);
         currentTile.setBackground(player);
 
+        if(MainGameActivity.getPlayerPokemon().getHP() > 0) {
+            Intent intent = new Intent(getActivity(), WildBattleActivity.class);
+            getActivity().startActivity(intent);
+        } else {
+            // display dialogue
+            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+            builder.setTitle(R.string.heal);
+            builder.setMessage(MainGameActivity.getPlayerPokemon().getName() + " is too weak! You need to heal first!");
+            builder.setCancelable(false);
+            builder.setNegativeButton(R.string.ok_label,
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            // dismiss dialog box.
+
+                        }
+                    });
+            // show
+            mDialog = builder.show();
+        }
+
         if(usedIds[currentTileNumber] == true) {
             currentTile.setVisibility(View.VISIBLE);
+        } else{
+            //battle
         }
     }
 
@@ -230,6 +259,14 @@ public class Grid extends Fragment {
             return "SE";
         } else {
             return "SW";
+        }
+    }
+
+    public void setPlayermodel(String s){
+        if (s == "boy"){
+            player = r.getDrawable(R.drawable.playermodel_guy,null);
+        } else {
+            player = r.getDrawable(R.drawable.playermodel_girl,null);
         }
     }
 

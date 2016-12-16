@@ -19,7 +19,7 @@
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Game created by Cameron Pilarski and Evan Page: CS4001"
+        android:text="@string/credit"
         android:textColor="#FFFFFF"
         android:layout_alignParentBottom="true"
         android:id="@+id/textView" />

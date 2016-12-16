@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:textColor="#FFFFFF"
         android:background="#000000"
-        android:text="Leave Tutorial"
+        android:text="@string/leave_tutorial"
         android:textSize="20dp"
         />
 

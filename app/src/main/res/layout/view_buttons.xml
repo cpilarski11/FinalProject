@@ -12,12 +12,9 @@
         />
 
     <TextView
-        android:layout_marginTop="20dp"
-        android:layout_width="500dp"
-        android:layout_height="wrap_content"
-        android:text="The game features a variety of buttons"
-        android:textAlignment="center"
-        android:textSize="25dp"
+        style="@style/TutText"
+        android:text="@string/tutButtons"
+
         />
 
 

@@ -1,9 +1,17 @@
 package com.example.cwpila14.finalproject.GameStuff;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.media.SoundPool;
 import android.os.Bundle;
 
 import android.app.Dialog;
@@ -19,12 +27,22 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.content.ContextCompat;
 
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.cwpila14.finalproject.BioStuff.BioFragment;
+import com.example.cwpila14.finalproject.BioStuff.StarterPokemonFragment;
+import com.example.cwpila14.finalproject.Pokemon.Bulbasaur;
+import com.example.cwpila14.finalproject.Pokemon.Charmander;
+import com.example.cwpila14.finalproject.Pokemon.Pokemon;
+import com.example.cwpila14.finalproject.Pokemon.Squirtle;
+import com.example.cwpila14.finalproject.StartScreenStuff.MainActivity;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -34,11 +52,16 @@ import com.google.android.gms.location.LocationServices;
 
 import com.example.cwpila14.finalproject.R;
 
+import static java.security.AccessController.getContext;
+
 public class MainGameActivity extends Activity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener, SensorEventListener {
 
+    // instance variables
     MediaPlayer mediaPlayer;
 
     private Grid grid;
+
+    public static final int NOTIFICATION_ID = 123;
 
     private GoogleApiClient mGoogleApiClient = null;
     private LocationRequest mLocationRequest;
@@ -50,24 +73,34 @@ public class MainGameActivity extends Activity implements GoogleApiClient.Connec
     private static final String STATE_RESOLVING_ERROR = "resolving_error";
 
     //Compass
-    private ImageView compass;
     private float currentDegree = 0f;
     private SensorManager mSensorManager;
 
+    private TextView name;
+    private ImageView character;
+    private ImageView starter;
+
+    private static
+    Pokemon player;
 
     //TODO remove unused things when done
-    TextView lat = null;
-    TextView lon = null;
-    TextView dist = null;
     Location mLastLocation = null;
     Location mCurrentLocation = null;
     private static final int PERMISSION_REQUEST_FINE_LOCATION = 1;
+
+    // sound stuff
+    private SoundPool sp = null;
+    private int buttonSound, wrongSound;
+
+    private AlertDialog mDialog;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_main);
+        getWindow().getAttributes().windowAnimations = R.style.Fade;
+        onPrepared();
 
         //Compass
         //compass = (ImageView) findViewById(R.id.compass);
@@ -94,6 +127,15 @@ public class MainGameActivity extends Activity implements GoogleApiClient.Connec
 
         // set up some things
         grid = (Grid) getFragmentManager().findFragmentById(R.id.grid_fragment);
+
+        name = (TextView) findViewById(R.id.textView3);
+        character = (ImageView) findViewById(R.id.imageView2);
+        starter = (ImageView) findViewById(R.id.imageView3);
+
+        name.setText(BioFragment.getName());
+
+        setStarter();
+        setCharacter();
 
         //instance state
         mResolvingError = savedInstanceState != null && savedInstanceState.getBoolean(STATE_RESOLVING_ERROR, false);
@@ -264,8 +306,7 @@ public class MainGameActivity extends Activity implements GoogleApiClient.Connec
 
     private void move(){
         float distance = mCurrentLocation.distanceTo(mLastLocation);
-        if(distance > 5.0){
-            dist.setText(distance + "");
+        if(distance >= 5.0){
             grid.move_player(mCurrentLocation, mLastLocation);
             mLastLocation = mCurrentLocation;
         }
@@ -285,5 +326,148 @@ public class MainGameActivity extends Activity implements GoogleApiClient.Connec
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
+    }
+
+    public void setStarter(){
+        String s = StarterPokemonFragment.getStarter();
+        switch (s){
+            case "Charmander":
+                starter.setBackground(getDrawable(R.drawable.charmanderstarter));
+                player = new Charmander("Charamander", 6);
+                break;
+            case "Squirtle":
+                starter.setBackground(getDrawable(R.drawable.squirtlestarter));
+                player = new Squirtle("Squirtle", 6);
+                break;
+            case "Bulbasaur":
+                starter.setBackground(getDrawable(R.drawable.bulbasaurstarter));
+                player = new Bulbasaur("Bulbasaur", 6);
+                break;
+        }
+    }
+
+    public static Pokemon getPlayerPokemon(){
+        return player;
+    }
+
+    public void setCharacter(){
+        String c = BioFragment.getCharacter();
+        if(c == "boy"){
+            character.setBackground(getDrawable(R.drawable.ash));
+        } else {
+            character.setBackground(getDrawable(R.drawable.girl));
+        }
+        grid.setPlayermodel(c);
+    }
+
+    // disable back button at this point
+    @Override
+    public void onBackPressed() {
+        // sound stuff
+        sp = new SoundPool(3, AudioManager.STREAM_MUSIC, 0);
+        buttonSound = sp.load(this, R.raw.button, 1);
+        wrongSound = sp.load(this, R.raw.cancel, 1);
+        sp.play(wrongSound, 1f, 1f, 1, 0, 1f);
+        Toast.makeText(this, "Cannot go back at this point", Toast.LENGTH_SHORT).show();
+
+        // super.onBackPressed(); // Comment this super call to avoid calling finish()
+    }
+
+    @Override
+    public void onDestroy() {
+
+        NotificationManager nmgr =
+                (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        nmgr.cancel(NOTIFICATION_ID);
+    }
+
+
+    public void onPrepared() {
+
+        // build a notification object
+
+        // create a notification builder object
+        Notification.Builder bldr =
+                new Notification.Builder(this).
+                        setSmallIcon(R.drawable.icon).
+                        setContentTitle("Pokemon").
+                        setContentText("Why take a break? Get back to playing Pokemon");
+
+        NotificationManager nmgr =
+                (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+
+        // set up code to go back to app with notification action
+
+        Intent intent = new Intent(this, MainGameActivity.class);
+
+        PendingIntent pendingIntent = PendingIntent.getActivity(
+                this,
+                0,
+                intent,
+                PendingIntent.FLAG_UPDATE_CURRENT
+        );
+
+        bldr.setContentIntent(pendingIntent);
+
+        nmgr.notify(NOTIFICATION_ID, bldr.build());
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.option_menu, menu); //your file name
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(final MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.settingsMenu:
+                //your code
+                // EX : call intent if you want to swich to other activity
+                return true;
+            case R.id.helpMenu:
+                //your code
+                // display dialog
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle(R.string.help);
+                builder.setMessage(R.string.Info);
+                builder.setCancelable(false);
+                builder.setNegativeButton(R.string.ok_label,
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                // dismiss dialog box
+
+                            }
+                        });
+                // show
+                mDialog = builder.show();
+
+                return true;
+            case R.id.toggleMusic:
+                //your code
+                if (mediaPlayer != null && mediaPlayer.isPlaying()) {
+                    mediaPlayer.stop();
+                    mediaPlayer.reset();
+                    mediaPlayer.release();
+                    mediaPlayer = null;
+                }
+                else{
+                    mediaPlayer = MediaPlayer.create(this, R.raw.game);
+                    mediaPlayer.setVolume(0.1f, 0.1f);
+                    mediaPlayer.setLooping(true);
+                    mediaPlayer.start();
+                }
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    public static void lvlup(){
+        player.lvlup();
     }
 }

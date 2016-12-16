@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
 
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:rowCount="10"
     android:columnCount="11"
@@ -250,7 +250,7 @@
     <ImageView
         android:id="@+id/Tile59"
         style="@style/Tiles"
-        android:background="@drawable/playermodel" />
+        android:background="@drawable/playermodel_guy" />
 
     <ImageView
         android:id="@+id/Tile60"

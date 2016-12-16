@@ -7,7 +7,7 @@
         android:id="@+id/StartButton"
         android:layout_width="250dp"
         android:layout_height="50dp"
-        android:text="Start"
+        android:text="@string/start"
         android:layout_marginBottom="20dp"
         style="@style/ButtonStyle"
 
@@ -17,7 +17,7 @@
         android:id="@+id/AboutButton"
         android:layout_width="250dp"
         android:layout_height="50dp"
-        android:text="About"
+        android:text="@string/about"
         style="@style/ButtonStyle"
         />
 
